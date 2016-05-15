@@ -8,13 +8,6 @@ import android.os.Parcelable;
  */
 public class UserAvatar implements Parcelable {
 
-    private AvatarSizes tiny;
-
-
-    protected UserAvatar(Parcel in) {
-        tiny = in.readParcelable(AvatarSizes.class.getClassLoader());
-    }
-
     public static final Creator<UserAvatar> CREATOR = new Creator<UserAvatar>() {
         @Override
         public UserAvatar createFromParcel(Parcel in) {
@@ -26,6 +19,11 @@ public class UserAvatar implements Parcelable {
             return new UserAvatar[size];
         }
     };
+    private AvatarSizes tiny;
+
+    protected UserAvatar(Parcel in) {
+        tiny = in.readParcelable(AvatarSizes.class.getClassLoader());
+    }
 
     public AvatarSizes getTiny() {
         return tiny;

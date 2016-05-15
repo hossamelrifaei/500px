@@ -7,18 +7,6 @@ import android.os.Parcelable;
  * Created by Hossam on 5/14/2016.
  */
 public class Image implements Parcelable {
-    private int size;
-    private String format;
-    private String https_url;
-    private String url;
-
-    protected Image(Parcel in) {
-        size = in.readInt();
-        format = in.readString();
-        https_url = in.readString();
-        url = in.readString();
-    }
-
     public static final Creator<Image> CREATOR = new Creator<Image>() {
         @Override
         public Image createFromParcel(Parcel in) {
@@ -30,6 +18,17 @@ public class Image implements Parcelable {
             return new Image[size];
         }
     };
+    private int size;
+    private String format;
+    private String https_url;
+    private String url;
+
+    protected Image(Parcel in) {
+        size = in.readInt();
+        format = in.readString();
+        https_url = in.readString();
+        url = in.readString();
+    }
 
     public int getSize() {
         return size;

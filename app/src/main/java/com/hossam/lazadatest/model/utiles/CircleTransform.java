@@ -8,8 +8,7 @@ import android.graphics.Paint;
 /**
  * Created by Hossam on 5/15/2016.
  */
-public class CircleTransform  implements com.squareup.picasso.Transformation {
-
+public class CircleTransform implements com.squareup.picasso.Transformation {
 
 
     @Override
@@ -32,7 +31,7 @@ public class CircleTransform  implements com.squareup.picasso.Transformation {
         paint.setShader(shader);
         paint.setAntiAlias(true);
 
-        float r = size/2f;
+        float r = size / 2f;
         canvas.drawCircle(r, r, r, paint);
 
         squaredBitmap.recycle();
@@ -41,6 +40,6 @@ public class CircleTransform  implements com.squareup.picasso.Transformation {
 
     @Override
     public String key() {
-        return "rounded";
+        return Utils.ROUNDED_TRANSFORMATION_KEY;
     }
 }

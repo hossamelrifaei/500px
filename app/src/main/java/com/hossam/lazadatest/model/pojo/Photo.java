@@ -8,24 +8,7 @@ import java.util.ArrayList;
 /**
  * Created by Hossam on 5/14/2016.
  */
-public class Photo implements Parcelable{
-    private String description;
-    private ArrayList<Image> images;
-    private String image_url;
-    private User user;
-    private String name;
-    private int id;
-
-
-    protected Photo(Parcel in) {
-        description = in.readString();
-        images = in.createTypedArrayList(Image.CREATOR);
-        image_url = in.readString();
-        user = in.readParcelable(User.class.getClassLoader());
-        name = in.readString();
-        id = in.readInt();
-    }
-
+public class Photo implements Parcelable {
     public static final Creator<Photo> CREATOR = new Creator<Photo>() {
         @Override
         public Photo createFromParcel(Parcel in) {
@@ -37,6 +20,21 @@ public class Photo implements Parcelable{
             return new Photo[size];
         }
     };
+    private String description;
+    private ArrayList<Image> images;
+    private String image_url;
+    private User user;
+    private String name;
+    private int id;
+
+    protected Photo(Parcel in) {
+        description = in.readString();
+        images = in.createTypedArrayList(Image.CREATOR);
+        image_url = in.readString();
+        user = in.readParcelable(User.class.getClassLoader());
+        name = in.readString();
+        id = in.readInt();
+    }
 
     public String getDescription() {
         return description;

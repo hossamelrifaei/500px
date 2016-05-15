@@ -6,7 +6,18 @@ import android.os.Parcelable;
 /**
  * Created by Hossam on 5/14/2016.
  */
-public class User implements Parcelable{
+public class User implements Parcelable {
+    public static final Creator<User> CREATOR = new Creator<User>() {
+        @Override
+        public User createFromParcel(Parcel in) {
+            return new User(in);
+        }
+
+        @Override
+        public User[] newArray(int size) {
+            return new User[size];
+        }
+    };
     private int affection;
     private UserAvatar avatars;
     private String city;
@@ -21,19 +32,6 @@ public class User implements Parcelable{
         country = in.readString();
         fullname = in.readString();
     }
-
-
-    public static final Creator<User> CREATOR = new Creator<User>() {
-        @Override
-        public User createFromParcel(Parcel in) {
-            return new User(in);
-        }
-
-        @Override
-        public User[] newArray(int size) {
-            return new User[size];
-        }
-    };
 
     public int getAffection() {
         return affection;

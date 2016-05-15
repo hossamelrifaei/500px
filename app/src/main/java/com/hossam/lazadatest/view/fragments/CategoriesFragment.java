@@ -23,6 +23,7 @@ public class CategoriesFragment extends Fragment implements OnItemRecycleViewCli
     private RecyclerView categoriesRecyclerView;
     private CategoriesAdapter categoriesAdapter;
     private RecyclerView.LayoutManager layoutManager;
+
     public CategoriesFragment() {
 
     }
@@ -30,7 +31,7 @@ public class CategoriesFragment extends Fragment implements OnItemRecycleViewCli
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-       View v = inflater.inflate(R.layout.fragment_categories, container, false);
+        View v = inflater.inflate(R.layout.fragment_categories, container, false);
         categoriesRecyclerView = (RecyclerView) v.findViewById(R.id.categories_recycler_view);
         layoutManager = new LinearLayoutManager(getActivity());
         categoriesRecyclerView.setLayoutManager(layoutManager);
@@ -42,17 +43,17 @@ public class CategoriesFragment extends Fragment implements OnItemRecycleViewCli
     }
 
     @Override
-    public void onItemClicked(int position, CategoriesAdapter mAdapter,ImageView imageView) {
+    public void onItemClicked(int position, CategoriesAdapter mAdapter, ImageView imageView) {
 
 
         CategoryPhotosFragment categoryPhotosFragment = new CategoryPhotosFragment();
         Bundle bundle = new Bundle();
-        bundle.putString(Utils.CATEGORY_TAG,mAdapter.getItem(position));
+        bundle.putString(Utils.CATEGORY_TAG, mAdapter.getItem(position));
         categoryPhotosFragment.setArguments(bundle);
         getActivity().getSupportFragmentManager()
                 .beginTransaction()
-                .add(R.id.container, categoryPhotosFragment)
-                .addToBackStack("stack")
+                .replace(R.id.container, categoryPhotosFragment)
+                .addToBackStack(Utils.BACK_STACK_TAG)
                 .commit();
     }
 

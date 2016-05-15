@@ -6,13 +6,7 @@ import android.os.Parcelable;
 /**
  * Created by Hossam on 5/14/2016.
  */
-public class AvatarSizes  implements Parcelable {
-    private String https;
-
-    protected AvatarSizes(Parcel in) {
-        https = in.readString();
-    }
-
+public class AvatarSizes implements Parcelable {
     public static final Creator<AvatarSizes> CREATOR = new Creator<AvatarSizes>() {
         @Override
         public AvatarSizes createFromParcel(Parcel in) {
@@ -24,6 +18,11 @@ public class AvatarSizes  implements Parcelable {
             return new AvatarSizes[size];
         }
     };
+    private String https;
+
+    protected AvatarSizes(Parcel in) {
+        https = in.readString();
+    }
 
     public String getHttps() {
         return https;

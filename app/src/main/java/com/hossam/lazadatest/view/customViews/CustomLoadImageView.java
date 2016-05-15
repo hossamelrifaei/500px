@@ -1,34 +1,50 @@
 package com.hossam.lazadatest.view.customViews;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.util.AttributeSet;
 import android.widget.ImageView;
 
 import com.hossam.lazadatest.R;
 import com.hossam.lazadatest.model.utiles.CircleTransform;
+import com.hossam.lazadatest.model.utiles.Utils;
 import com.squareup.picasso.Picasso;
+import com.squareup.picasso.Transformation;
 
 /**
  * Created by Hossam on 5/15/2016.
  */
 public class CustomLoadImageView extends ImageView {
     public CustomLoadImageView(Context context, AttributeSet attrs) {
-        super(context , attrs);
+        super(context, attrs);
 
     }
 
-    public void loadWithUrl(String url){
+    public void loadWithUrl(String url, String tag, boolean isRounded) {
 
+        Transformation transformation;
+        if (isRounded) {
+            transformation = new CircleTransform();
+        } else {
+            transformation = new Transformation() {
+                @Override
+                public Bitmap transform(Bitmap source) {
+                    return source;
+                }
+
+                @Override
+                public String key() {
+                    return Utils.SQUARE_TRANSFORMATION_KEY;
+                }
+            };
+        }
         Picasso.with(getContext())
                 .load(url)
+                .tag(tag)
+                .transform(transformation)
+                .priority(Picasso.Priority.LOW)
                 .placeholder(R.drawable.placeholder)
                 .into(this);
     }
-    public void loadWithUrlRounded(String url){
-        Picasso.with(getContext())
-                .load(url)
-                .placeholder(R.drawable.placeholder)
-                .transform(new CircleTransform())
-                .into(this);
-    }
+
 }

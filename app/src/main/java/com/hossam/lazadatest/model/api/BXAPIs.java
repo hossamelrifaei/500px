@@ -11,5 +11,5 @@ import retrofit2.http.Query;
  */
 public interface BXAPIs {
     @GET("/v1/photos")
-    Call<CategoryFeed> getPhotosByCategory(@Query("only") String category ,@Query("consumer_key") String consumerKey , @Query("page") int page , @Query("image_size") String size);
+    Call<CategoryFeed> getPhotosByCategory(@Query("only") String category, @Query("consumer_key") String consumerKey, @Query("page") int page, @Query("image_size") String size);
 }

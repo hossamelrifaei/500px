@@ -8,22 +8,7 @@ import java.util.ArrayList;
 /**
  * Created by Hossam on 5/14/2016.
  */
-public class CategoryFeed implements Parcelable{
-    private int current_page;
-    private int total_pages;
-    private ArrayList<Photo> photos;
-
-    public CategoryFeed(){
-        photos = new ArrayList<>();
-        current_page = 1;
-    }
-
-    protected CategoryFeed(Parcel in) {
-        current_page = in.readInt();
-        total_pages = in.readInt();
-        photos = in.createTypedArrayList(Photo.CREATOR);
-    }
-
+public class CategoryFeed implements Parcelable {
     public static final Creator<CategoryFeed> CREATOR = new Creator<CategoryFeed>() {
         @Override
         public CategoryFeed createFromParcel(Parcel in) {
@@ -35,6 +20,20 @@ public class CategoryFeed implements Parcelable{
             return new CategoryFeed[size];
         }
     };
+    private int current_page;
+    private int total_pages;
+    private ArrayList<Photo> photos;
+
+    public CategoryFeed() {
+        photos = new ArrayList<>();
+        current_page = 0;
+    }
+
+    protected CategoryFeed(Parcel in) {
+        current_page = in.readInt();
+        total_pages = in.readInt();
+        photos = in.createTypedArrayList(Photo.CREATOR);
+    }
 
     public int getCurrent_page() {
         return current_page;
