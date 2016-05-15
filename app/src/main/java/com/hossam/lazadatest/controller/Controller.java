@@ -52,7 +52,9 @@ public class Controller implements Callback<CategoryFeed> {
 
     public void cancel() {
 
-        call.cancel();
+        if (call != null){
+            call.cancel();
+        }
 
     }
 
