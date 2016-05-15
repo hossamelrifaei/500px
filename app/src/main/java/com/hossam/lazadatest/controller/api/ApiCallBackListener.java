@@ -1,4 +1,4 @@
-package com.hossam.lazadatest.controller;
+package com.hossam.lazadatest.controller.api;
 
 import com.hossam.lazadatest.model.pojo.CategoryFeed;
 

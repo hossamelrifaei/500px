@@ -15,7 +15,7 @@ import com.hossam.lazadatest.R;
 import com.hossam.lazadatest.adapter.EndlessRecyclerOnScrollListener;
 import com.hossam.lazadatest.adapter.OnItemRecycleViewClickListener;
 import com.hossam.lazadatest.adapter.PhotosAdapter;
-import com.hossam.lazadatest.controller.ApiCallBackListener;
+import com.hossam.lazadatest.controller.api.ApiCallBackListener;
 import com.hossam.lazadatest.controller.Controller;
 import com.hossam.lazadatest.model.pojo.CategoryFeed;
 import com.hossam.lazadatest.model.utiles.Utils;

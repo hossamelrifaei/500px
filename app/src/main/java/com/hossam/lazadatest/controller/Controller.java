@@ -1,7 +1,8 @@
 package com.hossam.lazadatest.controller;
 
 
-import com.hossam.lazadatest.model.api.BXAPIs;
+import com.hossam.lazadatest.controller.api.ApiCallBackListener;
+import com.hossam.lazadatest.controller.api.BXAPIs;
 import com.hossam.lazadatest.model.pojo.CategoryFeed;
 import com.hossam.lazadatest.model.utiles.Utils;
 
