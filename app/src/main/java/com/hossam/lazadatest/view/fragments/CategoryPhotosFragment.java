@@ -44,15 +44,11 @@ public class CategoryPhotosFragment extends Fragment implements ApiCallBackListe
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-
         if (savedInstanceState != null) {
             mCategoryFeed = savedInstanceState.getParcelable(Utils.SAVED_FEED);
-
-
+            lastSelectedIndex = savedInstanceState.getInt(Utils.LAST_SCROLL_INDEX);
         } else if (mCategoryFeed == null) {
-
             mCategoryFeed = new CategoryFeed();
-
         }
 
 
@@ -60,7 +56,6 @@ public class CategoryPhotosFragment extends Fragment implements ApiCallBackListe
         error_text = (TextView) v.findViewById(R.id.error_text);
         progressBar = (ProgressBar) v.findViewById(R.id.progressbar);
         mRecyclerView = (RecyclerView) v.findViewById(R.id.photos_recycler_view);
-
 
         return v;
     }
@@ -73,7 +68,6 @@ public class CategoryPhotosFragment extends Fragment implements ApiCallBackListe
         mController = Controller.getInstance(this);
         mCategoryName = getArguments().getString(Utils.CATEGORY_TAG);
         getActivity().setTitle(mCategoryName);
-
         mStaggeredGridLayoutManager = new StaggeredGridLayoutManager(2, 1);
         mRecyclerView.setLayoutManager(mStaggeredGridLayoutManager);
         mAdapter = new PhotosAdapter(this, mCategoryFeed.getPhotos());
@@ -87,7 +81,11 @@ public class CategoryPhotosFragment extends Fragment implements ApiCallBackListe
                 if (mCategoryFeed.getCurrent_page() < mCategoryFeed.getTotal_pages()) {
                     startFetch();
                 }
+            }
 
+            @Override
+            public void onScrolledToPosition(int position) {
+                lastSelectedIndex = position;
             }
         });
 
@@ -97,16 +95,16 @@ public class CategoryPhotosFragment extends Fragment implements ApiCallBackListe
     }
 
 
-
-
     @Override
     public void onSaveInstanceState(Bundle outState) {
 
         if (mCategoryFeed == null) {
             outState.putParcelable(Utils.SAVED_FEED, new CategoryFeed());
+
         } else {
             outState.putParcelable(Utils.SAVED_FEED, mCategoryFeed);
         }
+        outState.putInt(Utils.LAST_SCROLL_INDEX, lastSelectedIndex);
 
         super.onSaveInstanceState(outState);
     }
@@ -130,8 +128,6 @@ public class CategoryPhotosFragment extends Fragment implements ApiCallBackListe
             progressBar.setVisibility(View.GONE);
         }
     }
-
-
 
 
     @Override

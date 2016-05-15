@@ -28,6 +28,7 @@ public abstract class EndlessRecyclerOnScrollListener extends RecyclerView.OnScr
     @Override
     public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
         Picasso picasso = Picasso.with(recyclerView.getContext());
+        onScrolledToPosition(mStaggeredGridLayoutManager.findLastCompletelyVisibleItemPositions(null)[0]);
         int[] visibleItems = mStaggeredGridLayoutManager.findFirstCompletelyVisibleItemPositions(null);
 
         if (newState == RecyclerView.SCROLL_STATE_DRAGGING || newState == SCROLL_STATE_TOUCH_SCROLL) {
@@ -67,5 +68,7 @@ public abstract class EndlessRecyclerOnScrollListener extends RecyclerView.OnScr
     }
 
     public abstract void onLoadMore(int current_page);
+
+    public abstract void onScrolledToPosition(int position);
 
 }

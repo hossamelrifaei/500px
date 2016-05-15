@@ -20,13 +20,13 @@ public class Utils {
     public static final int LARGE_IMAGE_INDEX = 1;
     public static final String SQUARE_TRANSFORMATION_KEY = "square";
     public static final String ROUNDED_TRANSFORMATION_KEY = "rounded";
+    public static String LAST_SCROLL_INDEX = "lastscrollindex";
 
 
     public static boolean checkConnection(Context context) {
         ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
-        boolean isConnected = activeNetwork != null &&
-                activeNetwork.isConnectedOrConnecting();
+        boolean isConnected = activeNetwork != null && activeNetwork.isConnectedOrConnecting();
         return isConnected;
     }
 }
