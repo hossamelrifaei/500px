@@ -20,7 +20,9 @@ import com.hossam.lazadatest.controller.Controller;
 import com.hossam.lazadatest.model.pojo.CategoryFeed;
 import com.hossam.lazadatest.model.utiles.Utils;
 
-
+/**
+ * Created by Hossam on 5/14/2016.
+ */
 public class CategoryPhotosFragment extends Fragment implements ApiCallBackListener, OnItemRecycleViewClickListener<PhotosAdapter> {
 
     private Controller mController;
