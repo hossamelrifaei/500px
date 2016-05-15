@@ -8,6 +8,7 @@ import android.widget.ImageView;
 import com.hossam.lazadatest.R;
 import com.hossam.lazadatest.model.utiles.CircleTransform;
 import com.hossam.lazadatest.model.utiles.Utils;
+import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.Transformation;
 
@@ -15,13 +16,17 @@ import com.squareup.picasso.Transformation;
  * Created by Hossam on 5/15/2016.
  */
 public class CustomLoadImageView extends ImageView {
+
+    private OnLoadingImageFinishedListener mOnLoadingImageFinishedListener;
+
     public CustomLoadImageView(Context context, AttributeSet attrs) {
         super(context, attrs);
 
     }
 
-    public void loadWithUrl(String url, String tag, boolean isRounded) {
+    public void loadWithUrl(String url, String tag, boolean isRounded, final OnLoadingImageFinishedListener listener) {
 
+        mOnLoadingImageFinishedListener = listener;
         Transformation transformation;
         if (isRounded) {
             transformation = new CircleTransform();
@@ -44,7 +49,20 @@ public class CustomLoadImageView extends ImageView {
                 .transform(transformation)
                 .priority(Picasso.Priority.LOW)
                 .placeholder(R.drawable.placeholder)
-                .into(this);
+                .into(this, new Callback() {
+                    @Override
+                    public void onSuccess() {
+
+                        if (listener != null){
+                            listener.onFinishLoading();
+                        }
+                    }
+
+                    @Override
+                    public void onError() {
+
+                    }
+                });
     }
 
 }

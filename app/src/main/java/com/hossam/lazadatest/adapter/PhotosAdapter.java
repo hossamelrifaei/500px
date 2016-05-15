@@ -46,7 +46,7 @@ public class PhotosAdapter extends RecyclerView.Adapter<PhotosAdapter.PhotoItemV
     public void onBindViewHolder(final PhotosAdapter.PhotoItemViewHolder holder, int position) {
 
 
-        holder.imageView.loadWithUrl(getItem(position).getImages().get(Utils.SMALL_IMAGE_INDEX).getUrl(), Utils.IMAGE_LOADING_TAG + position, false);
+        holder.imageView.loadWithUrl(getItem(position).getImages().get(Utils.SMALL_IMAGE_INDEX).getUrl(), Utils.IMAGE_LOADING_TAG + position, false, null);
 
         holder.cardView.setTag(position);
         holder.cardView.setOnClickListener(new View.OnClickListener() {
