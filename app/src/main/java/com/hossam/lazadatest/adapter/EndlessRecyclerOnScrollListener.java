@@ -13,6 +13,7 @@ import com.squareup.picasso.Picasso;
 public abstract class EndlessRecyclerOnScrollListener extends RecyclerView.OnScrollListener {
 
     private static final int SCROLL_STATE_TOUCH_SCROLL = 0;
+    private static final int SCROLL_STATE_IDLE = 1;
     int firstVisibleItem, visibleItemCount, totalItemCount;
     private int previousTotal = 0;
     private boolean loading = true;
@@ -28,19 +29,19 @@ public abstract class EndlessRecyclerOnScrollListener extends RecyclerView.OnScr
     @Override
     public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
         Picasso picasso = Picasso.with(recyclerView.getContext());
-        onScrolledToPosition(mStaggeredGridLayoutManager.findLastCompletelyVisibleItemPositions(null)[0]);
-        int[] visibleItems = mStaggeredGridLayoutManager.findFirstCompletelyVisibleItemPositions(null);
 
-        if (newState == RecyclerView.SCROLL_STATE_DRAGGING || newState == SCROLL_STATE_TOUCH_SCROLL) {
-            for (int i = 0; i < visibleItems.length; i++) {
-                picasso.pauseTag(Utils.IMAGE_LOADING_TAG + visibleItems[i]);
-            }
+
+        if (newState == RecyclerView.SCROLL_STATE_IDLE) {
+
+            picasso.resumeTag(Utils.IMAGE_LOADING_TAG );
+
         } else {
-            for (int i = 0; i < visibleItems.length; i++) {
-                picasso.resumeTag(Utils.IMAGE_LOADING_TAG + visibleItems[i]);
-            }
+
+            picasso.pauseTag(Utils.IMAGE_LOADING_TAG);
 
         }
+
+
     }
 
     @Override
