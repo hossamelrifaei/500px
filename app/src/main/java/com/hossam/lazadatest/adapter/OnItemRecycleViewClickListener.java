@@ -7,6 +7,6 @@ import android.widget.ImageView;
  */
 public interface OnItemRecycleViewClickListener<T> {
 
-     void onItemClicked(int position, T mAdapter, ImageView imageView);
+    void onItemClicked(int position, T mAdapter, ImageView imageView);
 
 }

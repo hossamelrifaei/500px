@@ -53,7 +53,7 @@ public class CustomLoadImageView extends ImageView {
                     @Override
                     public void onSuccess() {
 
-                        if (listener != null){
+                        if (listener != null) {
                             listener.onFinishLoading();
                         }
                     }

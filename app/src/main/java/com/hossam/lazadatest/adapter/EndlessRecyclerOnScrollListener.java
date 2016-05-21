@@ -12,13 +12,10 @@ import com.squareup.picasso.Picasso;
  */
 public abstract class EndlessRecyclerOnScrollListener extends RecyclerView.OnScrollListener {
 
-    private static final int SCROLL_STATE_TOUCH_SCROLL = 0;
-    private static final int SCROLL_STATE_IDLE = 1;
     int firstVisibleItem, visibleItemCount, totalItemCount;
     private int previousTotal = 0;
     private boolean loading = true;
-    private int visibleThreshold = 0;
-    private int current_page = 1;
+    private int visibleThreshold = 4;
     private StaggeredGridLayoutManager mStaggeredGridLayoutManager;
 
     public EndlessRecyclerOnScrollListener(StaggeredGridLayoutManager staggeredGridLayoutManager) {
@@ -33,7 +30,7 @@ public abstract class EndlessRecyclerOnScrollListener extends RecyclerView.OnScr
 
         if (newState == RecyclerView.SCROLL_STATE_IDLE) {
 
-            picasso.resumeTag(Utils.IMAGE_LOADING_TAG );
+            picasso.resumeTag(Utils.IMAGE_LOADING_TAG);
 
         } else {
 
@@ -47,11 +44,10 @@ public abstract class EndlessRecyclerOnScrollListener extends RecyclerView.OnScr
     @Override
     public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
         super.onScrolled(recyclerView, dx, dy);
-
-
         visibleItemCount = recyclerView.getChildCount();
         totalItemCount = mStaggeredGridLayoutManager.getItemCount();
-        firstVisibleItem = mStaggeredGridLayoutManager.findFirstVisibleItemPositions(null)[0];
+        firstVisibleItem = mStaggeredGridLayoutManager.findLastVisibleItemPositions(null)[0];
+        onScrolledToPosition(firstVisibleItem);
 
         if (loading) {
             if (totalItemCount > previousTotal) {
@@ -59,17 +55,15 @@ public abstract class EndlessRecyclerOnScrollListener extends RecyclerView.OnScr
                 previousTotal = totalItemCount;
             }
         }
-        if (!loading && (totalItemCount - visibleItemCount)
-                <= (firstVisibleItem + visibleThreshold)) {
-            current_page++;
+        if (!loading && (totalItemCount - firstVisibleItem)
+                < visibleThreshold) {
 
-            onLoadMore(current_page);
-
+            onLoadMore();
             loading = true;
         }
     }
 
-    public abstract void onLoadMore(int current_page);
+    public abstract void onLoadMore();
 
     public abstract void onScrolledToPosition(int position);
 

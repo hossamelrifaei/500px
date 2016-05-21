@@ -31,7 +31,6 @@ public class PhotoFragment extends Fragment implements OnLoadingImageFinishedLis
 
 
         photo = getArguments().getParcelable(Utils.PHOTO_TAG);
-
         View v = inflater.inflate(R.layout.fragment_photo, container, false);
         user_location = (TextView) v.findViewById(R.id.user_location);
         user_name_text = (TextView) v.findViewById(R.id.user_name_text);

@@ -27,12 +27,22 @@ public class CategoryFeed implements Parcelable {
     public CategoryFeed() {
         photos = new ArrayList<>();
         current_page = 0;
+        total_pages = 1;
     }
 
     protected CategoryFeed(Parcel in) {
         current_page = in.readInt();
         total_pages = in.readInt();
         photos = in.createTypedArrayList(Photo.CREATOR);
+    }
+
+    public boolean isLastPage() {
+        return current_page == total_pages;
+
+    }
+
+    public int getNextPage() {
+        return getCurrent_page() + 1;
     }
 
     public int getCurrent_page() {

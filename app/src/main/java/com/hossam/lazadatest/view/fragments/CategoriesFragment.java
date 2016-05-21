@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import com.hossam.lazadatest.R;
 import com.hossam.lazadatest.adapter.CategoriesAdapter;
 import com.hossam.lazadatest.adapter.OnItemRecycleViewClickListener;
+import com.hossam.lazadatest.controller.Controller;
 import com.hossam.lazadatest.model.utiles.Utils;
 
 /**
@@ -45,7 +46,7 @@ public class CategoriesFragment extends Fragment implements OnItemRecycleViewCli
     @Override
     public void onItemClicked(int position, CategoriesAdapter mAdapter, ImageView imageView) {
 
-
+        Controller.init();
         CategoryPhotosFragment categoryPhotosFragment = new CategoryPhotosFragment();
         Bundle bundle = new Bundle();
         bundle.putString(Utils.CATEGORY_TAG, mAdapter.getItem(position));
