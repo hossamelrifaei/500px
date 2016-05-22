@@ -1,4 +1,4 @@
-package com.hossam.lazadatest.adapter;
+package com.hossam.lazadatest.view.interfaces;
 
 import android.widget.ImageView;
 

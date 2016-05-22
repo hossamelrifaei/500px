@@ -18,8 +18,8 @@ import com.hossam.lazadatest.controller.api.ApiCallBackListener;
 import com.hossam.lazadatest.model.pojo.Photo;
 import com.hossam.lazadatest.model.utiles.Utils;
 import com.hossam.lazadatest.view.customViews.CustomEndlessRecyclerView;
-import com.hossam.lazadatest.view.customViews.interfaces.OnItemRecycleViewClickListener;
-import com.hossam.lazadatest.view.customViews.interfaces.OnScrolledListener;
+import com.hossam.lazadatest.view.interfaces.OnItemRecycleViewClickListener;
+import com.hossam.lazadatest.view.interfaces.OnScrolledListener;
 
 import java.util.ArrayList;
 
@@ -123,6 +123,7 @@ public class CategoryPhotosFragment extends Fragment implements ApiCallBackListe
 
     @Override
     public void onItemClicked(int position, PhotosAdapter mAdapter, ImageView imageView) {
+        lastSelectedIndex = position;
         PhotoFragment photoFragment = new PhotoFragment();
         Bundle bundle = new Bundle();
         bundle.putParcelable(Utils.PHOTO_TAG, mAdapter.getItem(position));

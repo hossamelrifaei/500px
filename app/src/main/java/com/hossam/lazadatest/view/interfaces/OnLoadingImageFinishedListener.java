@@ -1,4 +1,4 @@
-package com.hossam.lazadatest.view.customViews.interfaces;
+package com.hossam.lazadatest.view.interfaces;
 
 /**
  * Created by Hossam on 5/16/2016.

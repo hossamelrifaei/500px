@@ -7,7 +7,7 @@ import android.widget.ImageView;
 
 import com.hossam.lazadatest.R;
 import com.hossam.lazadatest.model.utiles.Utils;
-import com.hossam.lazadatest.view.customViews.interfaces.OnLoadingImageFinishedListener;
+import com.hossam.lazadatest.view.interfaces.OnLoadingImageFinishedListener;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.Transformation;

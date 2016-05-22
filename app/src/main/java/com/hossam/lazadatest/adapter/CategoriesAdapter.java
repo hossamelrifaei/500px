@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import com.hossam.lazadatest.R;
 import com.hossam.lazadatest.model.pojo.Categories;
-import com.hossam.lazadatest.view.customViews.interfaces.OnItemRecycleViewClickListener;
+import com.hossam.lazadatest.view.interfaces.OnItemRecycleViewClickListener;
 
 /**
  * Created by Hossam on 5/14/2016.

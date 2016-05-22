@@ -7,8 +7,8 @@ import android.util.AttributeSet;
 
 import com.hossam.lazadatest.adapter.PhotosAdapter;
 import com.hossam.lazadatest.model.utiles.Utils;
-import com.hossam.lazadatest.view.customViews.interfaces.OnItemRecycleViewClickListener;
-import com.hossam.lazadatest.view.customViews.interfaces.OnScrolledListener;
+import com.hossam.lazadatest.view.interfaces.OnItemRecycleViewClickListener;
+import com.hossam.lazadatest.view.interfaces.OnScrolledListener;
 import com.squareup.picasso.Picasso;
 
 /**
@@ -28,11 +28,12 @@ public class CustomEndlessRecyclerView extends RecyclerView {
     }
 
     public void initialize(PhotosAdapter adapter, StaggeredGridLayoutManager layoutManager, OnItemRecycleViewClickListener listener, OnScrolledListener scrollListener) {
-        setAdapter(adapter);
-        setLayoutManager(layoutManager);
-        adapter.setmOnItemRecycleViewClickListener(listener);
         mStaggeredGridLayoutManager = layoutManager;
+        setAdapter(adapter);
+        setLayoutManager(mStaggeredGridLayoutManager);
+        adapter.setmOnItemRecycleViewClickListener(listener);
         mOnScrolledListener = scrollListener;
+
 
     }
 
