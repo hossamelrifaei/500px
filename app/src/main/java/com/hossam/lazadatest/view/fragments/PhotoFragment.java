@@ -12,7 +12,7 @@ import com.hossam.lazadatest.R;
 import com.hossam.lazadatest.model.pojo.Photo;
 import com.hossam.lazadatest.model.utiles.Utils;
 import com.hossam.lazadatest.view.customViews.CustomLoadImageView;
-import com.hossam.lazadatest.view.customViews.OnLoadingImageFinishedListener;
+import com.hossam.lazadatest.view.customViews.interfaces.OnLoadingImageFinishedListener;
 
 /**
  * Created by Hossam on 5/15/2016.

@@ -10,6 +10,7 @@ import com.hossam.lazadatest.R;
 import com.hossam.lazadatest.model.pojo.Photo;
 import com.hossam.lazadatest.model.utiles.Utils;
 import com.hossam.lazadatest.view.customViews.CustomLoadImageView;
+import com.hossam.lazadatest.view.customViews.interfaces.OnItemRecycleViewClickListener;
 
 import java.util.ArrayList;
 

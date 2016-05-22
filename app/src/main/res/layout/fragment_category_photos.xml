@@ -16,7 +16,7 @@
         android:textSize="@dimen/abc_text_size_large_material"
         android:visibility="gone" />
 
-    <android.support.v7.widget.RecyclerView
+    <com.hossam.lazadatest.view.customViews.CustomEndlessRecyclerView
         android:id="@+id/photos_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

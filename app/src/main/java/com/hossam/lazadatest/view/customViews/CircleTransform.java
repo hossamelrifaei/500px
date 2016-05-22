@@ -1,9 +1,11 @@
-package com.hossam.lazadatest.model.utiles;
+package com.hossam.lazadatest.view.customViews;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapShader;
 import android.graphics.Canvas;
 import android.graphics.Paint;
+
+import com.hossam.lazadatest.model.utiles.Utils;
 
 /**
  * Created by Hossam on 5/15/2016.

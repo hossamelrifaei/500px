@@ -40,6 +40,7 @@ public class Controller implements Callback<CategoryFeed> {
         mCategoryFeed = new CategoryFeed();
         mAdapter = new PhotosAdapter(null, mCategoryFeed.getPhotos());
 
+
     }
 
     public static void init() {
