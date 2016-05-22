@@ -133,6 +133,7 @@ public class CategoryPhotosFragment extends Fragment implements ApiCallBackListe
                 .replace(R.id.container, photoFragment)
                 .addToBackStack(Utils.BACK_STACK_TAG)
                 .commit();
+//
     }
 
 
