@@ -18,6 +18,8 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.Ca
     private OnItemRecycleViewClickListener mOnItemRecycleViewClickListener;
     private String[] mCategoriesList;
 
+//
+
 
     public CategoriesAdapter(OnItemRecycleViewClickListener onItemRecycleViewClickListener) {
         mCategoriesList = Categories.CategoriesList;
